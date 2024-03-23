@@ -1,3 +1,4 @@
+import { set } from "mongoose";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,6 +9,7 @@ export default function SignUp() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -62,7 +64,7 @@ export default function SignUp() {
           disabled={loading}
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Sign up"}
+          {loading ? "Loading..." : "Sign Up"}
         </button>
       </form>
       <div className="flex gap-2 mt-5">
@@ -71,7 +73,7 @@ export default function SignUp() {
           Sign in
         </Link>
       </div>
-      <p className="text-red-700 mt-5">{error && "something wet wrong!"}</p>
+      <p className="text-red-700 mt-5">{error && "Something went wrong!"}</p>
     </div>
   );
 }
