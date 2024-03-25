@@ -11,6 +11,7 @@ import OAuth from "../components/OAuth";
 export default function SignIn() {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
@@ -29,7 +30,6 @@ export default function SignIn() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-
       if (data.success === false) {
         dispatch(signInFailure(data));
         return;
@@ -40,7 +40,6 @@ export default function SignIn() {
       dispatch(signInFailure(error));
     }
   };
-
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
@@ -68,9 +67,9 @@ export default function SignIn() {
         <OAuth />
       </form>
       <div className="flex gap-2 mt-5">
-        <p>Don{"'"}t Have an account?</p>
-        <Link to="/sign-in" className="text-blue-500">
-          Sign up
+        <p>Don{"'"}t have an account?</p>
+        <Link to="/sign-up">
+          <span className="text-blue-500">Sign up</span>
         </Link>
       </div>
       <p className="text-red-700 mt-5">
