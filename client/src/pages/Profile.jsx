@@ -28,7 +28,6 @@ export default function Profile() {
   const [updateSuccess, setUpdateSuccess] = useState(false);
 
   const { currentUser, loading, error } = useSelector((state) => state.user);
-
   useEffect(() => {
     if (image) {
       handleFileUpload(image);
@@ -82,6 +81,7 @@ export default function Profile() {
       dispatch(updateUserFailure(error));
     }
   };
+
   const handleDeleteAccount = async () => {
     try {
       dispatch(deleteUserStart());
@@ -98,6 +98,7 @@ export default function Profile() {
       dispatch(deleteUserFailure(error));
     }
   };
+
   const handleSignOut = async () => {
     try {
       await fetch("/api/auth/signout");
